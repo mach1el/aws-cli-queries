@@ -22,3 +22,8 @@ aws ec2 describe-images --query 'Images[].ImageId'
 aws ec2 describe-network-interfaces --query 'NetworkInterfaces[*].PrivateIpAddress'
 ```
 **Filter example**: `--filters "Name=subnet-id,Values=subnet-123456"`
+
+* Get Security Groups IDs
+```
+aws ec2 --profile jayesongroup describe-security-groups --query "SecurityGroups[*].GroupId" 
+```
