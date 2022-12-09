@@ -27,3 +27,9 @@ aws ec2 describe-network-interfaces --query 'NetworkInterfaces[*].PrivateIpAddre
 ```
 aws ec2 --profile jayesongroup describe-security-groups --query "SecurityGroups[*].GroupId" 
 ```
+
+* Get name and IPs
+```
+aws ec2 --profile olegroup describe-instances --query 'Reservations[].Instances[].{name:Tags[?Key==`Name`]|[0].Value,ip:PrivateIpAddress}' 
+```
+**Filter example**: `--filters 'Name=instance-state-name,Values=running' 'Name=tag-value,Values=devops'`
